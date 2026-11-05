@@ -1307,6 +1307,11 @@ body.lightbox-lock{overflow:visible}
 .portfolio-grid .portfolio-divider::after{content:"";position:absolute;right:4px;top:50%;width:7px;height:7px;border-top:2px solid var(--muted);border-right:2px solid var(--muted);transform:translateY(-50%) rotate(45deg);opacity:.8}
 @media(max-width:760px){.portfolio-grid .portfolio-divider{flex-basis:78px!important}.portfolio-grid .portfolio-divider .dv-name{font-size:14px}}
 .benefits > .benefit-wide{grid-column:1 / -1}
+@media(max-width:760px){
+  .personal-grid{display:flex!important;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding:1px 1px 8px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+  .personal-grid .personal-card{flex:0 0 76%;scroll-snap-align:start}
+  .personal-grid .personal-card .thumb{max-height:none}
+}
 </style>
 <style>
 /* FAQ는 한 번에 하나만 펼쳐지도록 사용하며, 긴 답변도 폭을 넘지 않게 정리 */
