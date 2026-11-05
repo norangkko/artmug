@@ -1286,7 +1286,9 @@ body.lightbox-lock{overflow:visible}
 /* 최적화 카드 */
 .opt-work .opt-note{position:absolute;left:8px;right:8px;bottom:8px;z-index:2;padding:5px 8px;border-radius:9px;background:rgba(20,20,20,.62);color:#fff;font-size:11px;line-height:1.4;font-weight:600;text-align:center;word-break:keep-all;pointer-events:none}
 /* 카드가 늘어나도 영상·이미지가 빈칸 없이 채우도록 */
-.portfolio-grid .work:not(.shape-work) .thumb{flex:1 1 auto}
+.portfolio-grid .work .thumb{flex:1 1 auto}
+.portfolio-grid .shape-work .thumb{background:#fff!important;min-height:0!important}
+.portfolio-grid .shape-work .thumb img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center top!important}
 /* 완성작 영상 썸네일 (GIF 대체) */
 .zoom-wrap .thumb-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;transition:transform .2s ease, filter .2s ease}
 .zoom-wrap:hover .thumb-video{transform:scale(1.025);filter:brightness(.96)}
@@ -1523,7 +1525,7 @@ body.lightbox-lock{overflow:visible}
 <button class="tab-btn" data-filter="wardrobe" type="button">옷장</button>
 <button class="tab-btn" data-filter="hair" type="button">헤어텍스쳐</button>
 <button class="tab-btn" data-filter="shadow" type="button">실시간그림자</button>
-<button class="tab-btn" data-filter="physics" type="button">물리</button>
+<button class="tab-btn" data-filter="physics" type="button">MagicaCloth2</button>
 <button class="tab-btn" data-filter="optimize" type="button">와루도 최적화</button>
 </div>
 <!-- 포트폴리오 -->
@@ -1706,12 +1708,16 @@ body.lightbox-lock{overflow:visible}
 <span class="dv-name">헤어텍스처</span><small class="dv-sub">포트폴리오</small>
 </div>
 <article class="work" data-category="hair">
-<div class="thumb zoom-wrap"><img alt="헤어 텍스쳐" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/images/thumbs/image-19-62df87acd45b.jpg" data-full="https://norangkko.github.io/artmug/assets/images/image-19-62df87acd45b.png"/></div>
-<div class="work-info"><b>헤어 텍스쳐</b></div>
+<div class="thumb zoom-wrap"><img alt="색 맞춤" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/images/thumbs/image-19-62df87acd45b.jpg" data-full="https://norangkko.github.io/artmug/assets/images/image-19-62df87acd45b.png"/></div>
+<div class="work-info"><b>색 맞춤</b></div>
 </article>
 <article class="work" data-category="hair">
 <div class="thumb zoom-wrap"><img alt="브릿지" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/images/thumbs/image-20-3c69575adbd4.jpg" data-full="https://norangkko.github.io/artmug/assets/images/image-20-3c69575adbd4.png"/></div>
 <div class="work-info"><b>브릿지</b></div>
+</article>
+<article class="work" data-category="hair">
+<div class="thumb zoom-wrap"><img alt="색맞춤+브릿지" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/images/thumbs/image-21-bf1102480860.jpg" data-full="https://norangkko.github.io/artmug/assets/images/image-21-bf1102480860.png"/></div>
+<div class="work-info"><b>색맞춤+브릿지</b></div>
 </article>
 <div class="portfolio-divider" data-divider="shadow">
 <span class="dv-name">실시간 그림자</span><small class="dv-sub">포트폴리오</small>
@@ -1721,11 +1727,15 @@ body.lightbox-lock{overflow:visible}
 <div class="work-info"><b>VSF 실시간그림자</b></div>
 </article>
 <div class="portfolio-divider" data-divider="physics">
-<span class="dv-name">물리</span><small class="dv-sub">포트폴리오</small>
+<span class="dv-name">MagicaCloth2</span><small class="dv-sub">포트폴리오</small>
 </div>
 <article class="work" data-category="physics">
-<div class="thumb zoom-wrap"><img alt="MagicaCloth2" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/gif/magicacloth2.gif" data-full="https://norangkko.github.io/artmug/assets/gif/magicacloth2.gif"/></div>
-<div class="work-info"><b>MagicaCloth2</b></div>
+<div class="thumb zoom-wrap"><img alt="전체 마지카" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/gif/magicacloth2.gif" data-full="https://norangkko.github.io/artmug/assets/gif/magicacloth2.gif"/></div>
+<div class="work-info"><b>전체 마지카</b></div>
+</article>
+<article class="work" data-category="physics">
+<div class="thumb zoom-wrap"><img alt="치마 마지카" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/video/skirt-magica.jpg" data-full="https://norangkko.github.io/artmug/assets/video/skirt-magica.jpg" data-video="https://norangkko.github.io/artmug/assets/video/skirt-magica.mp4" data-poster="https://norangkko.github.io/artmug/assets/video/skirt-magica-poster.jpg"/><video class="thumb-video" src="https://norangkko.github.io/artmug/assets/video/skirt-magica-thumb.mp4" poster="https://norangkko.github.io/artmug/assets/video/skirt-magica.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
+<div class="work-info"><b>치마 마지카</b></div>
 </article>
 <div class="portfolio-divider" data-divider="optimize">
 <span class="dv-name">와루도 최적화</span><small class="dv-sub">포트폴리오</small>
