@@ -1282,6 +1282,28 @@ body.lightbox-lock{overflow:visible}
   .collaborator-bottom a{font-size:10.5px}
 }
 
+
+/* 최적화 카드 */
+.opt-work .opt-note{position:absolute;left:8px;right:8px;bottom:8px;z-index:2;padding:5px 8px;border-radius:9px;background:rgba(20,20,20,.62);color:#fff;font-size:11px;line-height:1.4;font-weight:600;text-align:center;word-break:keep-all;pointer-events:none}
+/* 카드가 늘어나도 영상·이미지가 빈칸 없이 채우도록 */
+.portfolio-grid .work:not(.shape-work) .thumb{flex:1 1 auto}
+/* 완성작 영상 썸네일 (GIF 대체) */
+.zoom-wrap .thumb-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;transition:transform .2s ease, filter .2s ease}
+.zoom-wrap:hover .thumb-video{transform:scale(1.025);filter:brightness(.96)}
+.lightbox-video{display:none;object-fit:contain;max-width:100%;max-height:100%;width:auto;height:auto;min-height:0;min-width:0;flex:0 1 auto;border-radius:14px;background:#000;box-shadow:0 18px 55px rgba(0,0,0,.30)}
+.lightbox.video-mode .lightbox-image{display:none!important}
+.lightbox.video-mode .lightbox-video{display:block}
+.lightbox.video-mode .lightbox-media{background:#000;border-radius:14px;align-items:flex-end}
+.lightbox.video-mode .lightbox-video{border-radius:0;box-shadow:none;background:transparent}
+.lightbox.video-mode .lightbox-video.fill{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;object-position:center bottom}
+
+/* 구분 카드: 작게, 테두리·배경 없이 */
+.portfolio-grid .portfolio-divider{flex:0 0 92px!important;min-height:0!important;align-self:center;border:0!important;background:none!important;box-shadow:none!important;border-radius:0;padding:0 4px!important;justify-content:center;align-items:center;text-align:center;gap:0}
+.portfolio-grid .portfolio-divider .dv-name{display:block;font-size:15px;line-height:1.3;font-weight:800;letter-spacing:-.4px;word-break:keep-all;text-wrap:balance;color:var(--ink)}
+.portfolio-grid .portfolio-divider .dv-sub{display:block;margin-top:3px;font-size:11px;font-weight:500;color:var(--muted)}
+.portfolio-grid .portfolio-divider{position:relative;padding-right:18px!important}
+.portfolio-grid .portfolio-divider::after{content:"";position:absolute;right:4px;top:50%;width:7px;height:7px;border-top:2px solid var(--muted);border-right:2px solid var(--muted);transform:translateY(-50%) rotate(45deg);opacity:.8}
+@media(max-width:760px){.portfolio-grid .portfolio-divider{flex-basis:78px!important}.portfolio-grid .portfolio-divider .dv-name{font-size:14px}}
 </style>
 <style>
 /* FAQ는 한 번에 하나만 펼쳐지도록 사용하며, 긴 답변도 폭을 넘지 않게 정리 */
@@ -1419,8 +1441,8 @@ body.lightbox-lock{overflow:visible}
 </div>
 </div>
 <div class="greeting">
-      자연스러운 표정과 움직임을 중심으로 아바타를 작업합니다.<br/>
-      처음 이용하시는 분도 편하게 사용할 수 있도록 작업 완료 후 설정과 사용 방법을 함께 안내드립니다.
+      원하는 분위기와 취향에 맞게 작업 해드립니다!<br/>
+      자연스럽고 풍부한 표정이 나올 수 있게 노력할게요!
     </div>
 </section>
 <section class="card">
@@ -1445,7 +1467,7 @@ body.lightbox-lock{overflow:visible}
 <div class="benefit">
 <div class="benefit-num">BENEFIT 03</div>
 <b>초보자용 가이드</b>
-<p>파츠 찾는 방법과 기본 세팅 방법을 정리한 가이드라인을 제공합니다.</p>
+<p>파츠 찾는 방법과 기본 세팅 방법을 정리한 가이드라인을 제공하며, 가이드만으로 어려운 부분은 1:1 맞춤 안내도 해드립니다.</p>
 </div>
 <div class="benefit">
 <div class="benefit-num">BENEFIT 04</div>
@@ -1453,7 +1475,6 @@ body.lightbox-lock{overflow:visible}
 <p>공지, 자료 안내와 원활한 컨펌을 위한 작업용 서버를 운영합니다.</p>
 </div>
 </div>
-<div class="service-note">가이드만이 끝이 아닌 1:1 맞춤 안내도 해드리고 있습니다.</div>
 </section>
 <section class="card">
 <div class="section-head">
@@ -1503,32 +1524,33 @@ body.lightbox-lock{overflow:visible}
 <button class="tab-btn" data-filter="hair" type="button">헤어텍스쳐</button>
 <button class="tab-btn" data-filter="shadow" type="button">실시간그림자</button>
 <button class="tab-btn" data-filter="physics" type="button">물리</button>
+<button class="tab-btn" data-filter="optimize" type="button">와루도 최적화</button>
 </div>
 <!-- 포트폴리오 -->
 <div class="portfolio-shell">
 <button aria-label="이전" class="slide-btn slide-prev" onclick="slidePortfolio(-1)" type="button">‹</button>
 <div class="portfolio-grid" id="portfolioSlider">
 <div class="portfolio-divider" data-divider="complete">
-<span>완성작 포트폴리오</span>
+<span class="dv-name">완성작</span><small class="dv-sub">포트폴리오</small>
 </div>
 <article class="work" data-category="complete">
-<div class="thumb zoom-wrap"><img alt="채린이임님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/gif/chaerinim.gif" data-full="https://norangkko.github.io/artmug/assets/gif/chaerinim.gif"/></div>
+<div class="thumb zoom-wrap"><img alt="채린이임님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/video/chaerinim.jpg" data-full="https://norangkko.github.io/artmug/assets/video/chaerinim.jpg" data-video="https://norangkko.github.io/artmug/assets/video/chaerinim.mp4" data-poster="https://norangkko.github.io/artmug/assets/video/chaerinim-poster.jpg"/><video class="thumb-video" src="https://norangkko.github.io/artmug/assets/video/chaerinim-thumb.mp4" poster="https://norangkko.github.io/artmug/assets/video/chaerinim.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
 <div class="work-info"><b>채린이임님 완성작</b></div>
 </article>
 <article class="work" data-category="complete">
-<div class="thumb zoom-wrap"><img alt="뉴이님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/gif/newy.gif" data-full="https://norangkko.github.io/artmug/assets/gif/newy.gif"/></div>
+<div class="thumb zoom-wrap"><img alt="뉴이님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/video/newy.jpg" data-full="https://norangkko.github.io/artmug/assets/video/newy.jpg" data-video="https://norangkko.github.io/artmug/assets/video/newy.mp4" data-poster="https://norangkko.github.io/artmug/assets/video/newy-poster.jpg"/><video class="thumb-video" src="https://norangkko.github.io/artmug/assets/video/newy-thumb.mp4" poster="https://norangkko.github.io/artmug/assets/video/newy.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
 <div class="work-info"><b>뉴이님 완성작</b></div>
 </article>
 <article class="work" data-category="complete">
-<div class="thumb zoom-wrap"><img alt="주핫님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/gif/juhat.gif" data-full="https://norangkko.github.io/artmug/assets/gif/juhat.gif"/></div>
+<div class="thumb zoom-wrap"><img alt="주핫님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/video/juhat.jpg" data-full="https://norangkko.github.io/artmug/assets/video/juhat.jpg" data-video="https://norangkko.github.io/artmug/assets/video/juhat.mp4" data-poster="https://norangkko.github.io/artmug/assets/video/juhat-poster.jpg"/><video class="thumb-video" src="https://norangkko.github.io/artmug/assets/video/juhat-thumb.mp4" poster="https://norangkko.github.io/artmug/assets/video/juhat.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
 <div class="work-info"><b>주핫님 완성작</b></div>
 </article>
 <article class="work" data-category="complete">
-<div class="thumb zoom-wrap"><img alt="히요나님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/gif/hiyona.gif" data-full="https://norangkko.github.io/artmug/assets/gif/hiyona.gif"/></div>
+<div class="thumb zoom-wrap"><img alt="히요나님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/video/hiyona.jpg" data-full="https://norangkko.github.io/artmug/assets/video/hiyona.jpg" data-video="https://norangkko.github.io/artmug/assets/video/hiyona.mp4" data-poster="https://norangkko.github.io/artmug/assets/video/hiyona-poster.jpg"/><video class="thumb-video" src="https://norangkko.github.io/artmug/assets/video/hiyona-thumb.mp4" poster="https://norangkko.github.io/artmug/assets/video/hiyona.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
 <div class="work-info"><b>히요나님 완성작</b></div>
 </article>
 <article class="work" data-category="complete">
-<div class="thumb zoom-wrap"><img alt="아루별님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/gif/arubyeol.gif" data-full="https://norangkko.github.io/artmug/assets/gif/arubyeol.gif"/></div>
+<div class="thumb zoom-wrap"><img alt="아루별님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/video/arubyeol.jpg" data-full="https://norangkko.github.io/artmug/assets/video/arubyeol.jpg" data-video="https://norangkko.github.io/artmug/assets/video/arubyeol.mp4" data-poster="https://norangkko.github.io/artmug/assets/video/arubyeol-poster.jpg"/><video class="thumb-video" src="https://norangkko.github.io/artmug/assets/video/arubyeol-thumb.mp4" poster="https://norangkko.github.io/artmug/assets/video/arubyeol.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
 <div class="work-info"><b>아루별님 완성작</b></div>
 </article>
 <article class="work" data-category="complete">
@@ -1552,15 +1574,15 @@ body.lightbox-lock{overflow:visible}
 <div class="work-info"><b>김뭉글님 완성작</b></div>
 </article>
 <article class="work" data-category="complete">
-<div class="thumb zoom-wrap"><img alt="시로츠네한야님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17782573630.gif" data-full="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17782573630.gif"/></div>
+<div class="thumb zoom-wrap"><img alt="시로츠네한야님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/video/shirotsune.jpg" data-full="https://norangkko.github.io/artmug/assets/video/shirotsune.jpg" data-video="https://norangkko.github.io/artmug/assets/video/shirotsune.mp4" data-poster="https://norangkko.github.io/artmug/assets/video/shirotsune-poster.jpg"/><video class="thumb-video" src="https://norangkko.github.io/artmug/assets/video/shirotsune-thumb.mp4" poster="https://norangkko.github.io/artmug/assets/video/shirotsune.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
 <div class="work-info"><b>시로츠네한야님 완성작</b></div>
 </article>
 <article class="work" data-category="complete">
-<div class="thumb zoom-wrap"><img alt="설레지히님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17782573680.gif" data-full="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17782573680.gif"/></div>
+<div class="thumb zoom-wrap"><img alt="설레지히님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/video/seolleji.jpg" data-full="https://norangkko.github.io/artmug/assets/video/seolleji.jpg" data-video="https://norangkko.github.io/artmug/assets/video/seolleji.mp4" data-poster="https://norangkko.github.io/artmug/assets/video/seolleji-poster.jpg"/><video class="thumb-video" src="https://norangkko.github.io/artmug/assets/video/seolleji-thumb.mp4" poster="https://norangkko.github.io/artmug/assets/video/seolleji.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
 <div class="work-info"><b>설레지히님 완성작</b></div>
 </article>
 <article class="work" data-category="complete">
-<div class="thumb zoom-wrap"><img alt="비코님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17782573270.gif" data-full="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17782573270.gif"/></div>
+<div class="thumb zoom-wrap"><img alt="비코님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/video/biko.jpg" data-full="https://norangkko.github.io/artmug/assets/video/biko.jpg" data-video="https://norangkko.github.io/artmug/assets/video/biko.mp4" data-poster="https://norangkko.github.io/artmug/assets/video/biko-poster.jpg"/><video class="thumb-video" src="https://norangkko.github.io/artmug/assets/video/biko-thumb.mp4" poster="https://norangkko.github.io/artmug/assets/video/biko.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
 <div class="work-info"><b>비코님 완성작</b></div>
 </article>
 <article class="work" data-category="complete">
@@ -1568,7 +1590,7 @@ body.lightbox-lock{overflow:visible}
 <div class="work-info"><b>유비님 완성작</b></div>
 </article>
 <article class="work" data-category="complete">
-<div class="thumb zoom-wrap"><img alt="유메님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17782570580.gif" data-full="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17782570580.gif"/></div>
+<div class="thumb zoom-wrap"><img alt="유메님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/video/yume.jpg" data-full="https://norangkko.github.io/artmug/assets/video/yume.jpg" data-video="https://norangkko.github.io/artmug/assets/video/yume.mp4" data-poster="https://norangkko.github.io/artmug/assets/video/yume-poster.jpg"/><video class="thumb-video" src="https://norangkko.github.io/artmug/assets/video/yume-thumb.mp4" poster="https://norangkko.github.io/artmug/assets/video/yume.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
 <div class="work-info"><b>유메님 완성작</b></div>
 </article>
 <article class="work" data-category="complete">
@@ -1576,19 +1598,19 @@ body.lightbox-lock{overflow:visible}
 <div class="work-info"><b>말금님 완성작</b></div>
 </article>
 <article class="work" data-category="complete">
-<div class="thumb zoom-wrap"><img alt="모쿠나님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17782612371.gif" data-full="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17782612371.gif"/></div>
+<div class="thumb zoom-wrap"><img alt="모쿠나님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/video/mokuna.jpg" data-full="https://norangkko.github.io/artmug/assets/video/mokuna.jpg" data-video="https://norangkko.github.io/artmug/assets/video/mokuna.mp4" data-poster="https://norangkko.github.io/artmug/assets/video/mokuna-poster.jpg"/><video class="thumb-video" src="https://norangkko.github.io/artmug/assets/video/mokuna-thumb.mp4" poster="https://norangkko.github.io/artmug/assets/video/mokuna.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
 <div class="work-info"><b>모쿠나님 완성작</b></div>
 </article>
 <article class="work" data-category="complete">
-<div class="thumb zoom-wrap"><img alt="묘몽님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17782612370.gif" data-full="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17782612370.gif"/></div>
+<div class="thumb zoom-wrap"><img alt="묘몽님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/video/myomong.jpg" data-full="https://norangkko.github.io/artmug/assets/video/myomong.jpg" data-video="https://norangkko.github.io/artmug/assets/video/myomong.mp4" data-poster="https://norangkko.github.io/artmug/assets/video/myomong-poster.jpg"/><video class="thumb-video" src="https://norangkko.github.io/artmug/assets/video/myomong-thumb.mp4" poster="https://norangkko.github.io/artmug/assets/video/myomong.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
 <div class="work-info"><b>묘몽님 완성작</b></div>
 </article>
 <article class="work" data-category="complete">
-<div class="thumb zoom-wrap"><img alt="미떼님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17782613700.gif" data-full="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17782613700.gif"/></div>
+<div class="thumb zoom-wrap"><img alt="미떼님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/video/mitte.jpg" data-full="https://norangkko.github.io/artmug/assets/video/mitte.jpg" data-video="https://norangkko.github.io/artmug/assets/video/mitte.mp4" data-poster="https://norangkko.github.io/artmug/assets/video/mitte-poster.jpg"/><video class="thumb-video" src="https://norangkko.github.io/artmug/assets/video/mitte-thumb.mp4" poster="https://norangkko.github.io/artmug/assets/video/mitte.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
 <div class="work-info"><b>미떼님 완성작</b></div>
 </article>
 <article class="work" data-category="complete">
-<div class="thumb zoom-wrap"><img alt="차차삐님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17782613701.gif" data-full="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17782613701.gif"/></div>
+<div class="thumb zoom-wrap"><img alt="차차삐님" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/video/chachappi.jpg" data-full="https://norangkko.github.io/artmug/assets/video/chachappi.jpg" data-video="https://norangkko.github.io/artmug/assets/video/chachappi.mp4" data-poster="https://norangkko.github.io/artmug/assets/video/chachappi-poster.jpg"/><video class="thumb-video" src="https://norangkko.github.io/artmug/assets/video/chachappi-thumb.mp4" poster="https://norangkko.github.io/artmug/assets/video/chachappi.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>
 <div class="work-info"><b>차차삐님 완성작</b></div>
 </article>
 <article class="work" data-category="complete">
@@ -1616,7 +1638,7 @@ body.lightbox-lock{overflow:visible}
 <div class="work-info"><b>차나임당님 완성작</b></div>
 </article>
 <div class="portfolio-divider" data-divider="shape">
-<span>성형 포트폴리오</span>
+<span class="dv-name">성형</span><small class="dv-sub">포트폴리오</small>
 </div>
 <article class="work shape-work" data-category="shape">
 <div class="thumb zoom-wrap"><img alt="백나모님 성형 포트폴리오" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/images/thumbs/image-03-9e1aff514eab.jpg" data-full="https://norangkko.github.io/artmug/assets/images/image-03-9e1aff514eab.png"/></div>
@@ -1663,14 +1685,14 @@ body.lightbox-lock{overflow:visible}
 <div class="work-info"><b>냥시기님 성형</b></div>
 </article>
 <div class="portfolio-divider" data-divider="boing">
-<span>뽀잉눈 포트폴리오</span>
+<span class="dv-name">뽀잉눈</span><small class="dv-sub">포트폴리오</small>
 </div>
 <article class="work" data-category="boing">
 <div class="thumb zoom-wrap"><img alt="뽀잉눈 예시" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17609461070.gif" data-full="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17609461070.gif"/></div>
 <div class="work-info"><b>뽀잉눈 예시</b></div>
 </article>
 <div class="portfolio-divider" data-divider="wardrobe">
-<span>옷장 포트폴리오</span>
+<span class="dv-name">옷장</span><small class="dv-sub">포트폴리오</small>
 </div>
 <article class="work" data-category="wardrobe">
 <div class="thumb zoom-wrap"><img alt="VSF 옷장 핫키" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17609462340.gif" data-full="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17609462340.gif"/></div>
@@ -1681,7 +1703,7 @@ body.lightbox-lock{overflow:visible}
 <div class="work-info"><b>와루도 옷장</b></div>
 </article>
 <div class="portfolio-divider" data-divider="hair">
-<span>헤어텍스처 포트폴리오</span>
+<span class="dv-name">헤어텍스처</span><small class="dv-sub">포트폴리오</small>
 </div>
 <article class="work" data-category="hair">
 <div class="thumb zoom-wrap"><img alt="헤어 텍스쳐" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/images/thumbs/image-19-62df87acd45b.jpg" data-full="https://norangkko.github.io/artmug/assets/images/image-19-62df87acd45b.png"/></div>
@@ -1692,18 +1714,29 @@ body.lightbox-lock{overflow:visible}
 <div class="work-info"><b>브릿지</b></div>
 </article>
 <div class="portfolio-divider" data-divider="shadow">
-<span>실시간 그림자 포트폴리오</span>
+<span class="dv-name">실시간 그림자</span><small class="dv-sub">포트폴리오</small>
 </div>
 <article class="work" data-category="shadow">
 <div class="thumb zoom-wrap"><img alt="VSF 실시간그림자" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17609461430.gif" data-full="https://artmugfile6.mycafe24.com/image/up_img/detail/4/goods_49397/17609461430.gif"/></div>
 <div class="work-info"><b>VSF 실시간그림자</b></div>
 </article>
 <div class="portfolio-divider" data-divider="physics">
-<span>물리 포트폴리오</span>
+<span class="dv-name">물리</span><small class="dv-sub">포트폴리오</small>
 </div>
 <article class="work" data-category="physics">
 <div class="thumb zoom-wrap"><img alt="MagicaCloth2" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/gif/magicacloth2.gif" data-full="https://norangkko.github.io/artmug/assets/gif/magicacloth2.gif"/></div>
 <div class="work-info"><b>MagicaCloth2</b></div>
+</article>
+<div class="portfolio-divider" data-divider="optimize">
+<span class="dv-name">와루도 최적화</span><small class="dv-sub">포트폴리오</small>
+</div>
+<article class="work opt-work" data-category="optimize">
+<div class="thumb zoom-wrap"><img alt="최적화 전" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/video/opt-before.jpg" data-full="https://norangkko.github.io/artmug/assets/video/opt-before.jpg" data-video="https://norangkko.github.io/artmug/assets/video/opt-before.mp4" data-poster="https://norangkko.github.io/artmug/assets/video/opt-before-poster.jpg"/><video class="thumb-video" src="https://norangkko.github.io/artmug/assets/video/opt-before-thumb.mp4" poster="https://norangkko.github.io/artmug/assets/video/opt-before.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="opt-note">헤어 9개, 의상 10개 보유 중인 파일로 테스트하였습니다</span></div>
+<div class="work-info"><b>최적화 전</b></div>
+</article>
+<article class="work opt-work" data-category="optimize">
+<div class="thumb zoom-wrap"><img alt="최적화 후" class="zoomable-image" data-lightbox-group="portfolio" decoding="async" src="https://norangkko.github.io/artmug/assets/video/opt-after.jpg" data-full="https://norangkko.github.io/artmug/assets/video/opt-after.jpg" data-video="https://norangkko.github.io/artmug/assets/video/opt-after.mp4" data-poster="https://norangkko.github.io/artmug/assets/video/opt-after-poster.jpg"/><video class="thumb-video" src="https://norangkko.github.io/artmug/assets/video/opt-after-thumb.mp4" poster="https://norangkko.github.io/artmug/assets/video/opt-after.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="opt-note">헤어 9개, 의상 10개 보유 중인 파일로 테스트하였습니다</span></div>
+<div class="work-info"><b>최적화 후</b></div>
 </article>
 </div>
 <button aria-label="다음" class="slide-btn slide-next" onclick="slidePortfolio(1)" type="button">›</button>
@@ -1727,21 +1760,6 @@ body.lightbox-lock{overflow:visible}
 </article>
 <article class="personal-card">
 <div class="thumb zoom-wrap"><img alt="마누카 3" class="zoomable-image" data-lightbox-group="personal" decoding="async" src="assets/개인작/마누카/3.png"/></div>
-</article>
-</div>
-<div class="personal-spec" style="margin-top:28px">
-<p>아바타 : 시나노</p>
-<p>구성 : 헤어1개, 의상1개, 닐로툰 전체셋팅, 마지카 전체셋팅</p>
-</div>
-<div class="personal-grid" style="margin-top:12px">
-<article class="personal-card">
-<div class="thumb zoom-wrap"><img alt="시나노 1" class="zoomable-image" data-lightbox-group="personal" decoding="async" src="assets/개인작/시나노/1.png?v=2"/></div>
-</article>
-<article class="personal-card">
-<div class="thumb zoom-wrap"><img alt="시나노 2" class="zoomable-image" data-lightbox-group="personal" decoding="async" src="assets/개인작/시나노/2.png?v=2"/></div>
-</article>
-<article class="personal-card">
-<div class="thumb zoom-wrap"><img alt="시나노 3" class="zoomable-image" data-lightbox-group="personal" decoding="async" src="assets/개인작/시나노/3.png?v=2"/></div>
 </article>
 </div>
 </section>
@@ -1826,29 +1844,28 @@ body.lightbox-lock{overflow:visible}
       </p>
 </details>
 <details>
-<summary>2. VSF의 가성비 세트와 고급 세트의 차이는 무엇인가요?</summary>
+<summary>2. 데뷔세트 3가지는 각각 어떤 차이가 있나요?</summary>
 <p>
-        가성비 세트는 Unity만 사용하여 작업하며, 베이스 아바타에서 큰 폭의 성형은 어렵습니다.
-        또한 페이셜은 아이·우·에·오 5가지 기본 발음만 인식하며, 웹캠만으로도 사용이 가능합니다.<br/><br/>
-        고급 세트는 Unity와 Blender를 함께 사용하여 더욱 정밀한 성형이 가능하며,
-        52가지 페이셜을 지원하여 다양한 표정 연출이 가능하며, Face ID를 지원하는 아이폰 또는 아이패드가 필수로 필요합니다.
+        세 세트 모두 제작 방식은 같고, <b>방송 프로그램</b>만 달라요.<br/><br/>
+        <b>VSF(VSeeFace)</b><br/>
+        · 가볍고 단순해서 상반신 위주의 소통 방송에 딱이에요.<br/>
+        · 컴퓨터 사양이 좋지 않다면 추천드려요. 나중에 와루도나 멜리고로 이사도 가능해요.<br/><br/>
+        <b>Warudo(와루도)</b><br/>
+        · <b>제일 추천드리는 프로그램</b>입니다.<br/>
+        · 무료 포즈, 후원 연동 등 다양한 기능을 자유롭게 쓸 수 있어요.<br/>
+        · 닐로툰은 <b>Pro 라이센스를 따로 구매</b>해야 사용할 수 있어요.<br/><br/>
+        <b>Meligo(멜리고)</b><br/>
+        · 와루도처럼 다양한 기능을 쓸 수 있지만, 일부 기능은 제한적이에요.<br/>
+        · Pro 라이센스 없이도 <b>닐로툰을 바로 사용</b>할 수 있어요.<br/>
+        · 마지카와 닐로툰으로만 진행해요.
       </p>
 </details>
 <details>
-<summary>3. Warudo와 VSeeFace의 차이가 뭔가요?</summary>
-<p>
-        Warudo(와루도)와 VSeeFace(VSF)는 단순 프로그램 차이이며, 버츄얼 제작 방식은 두 프로그램 모두 똑같아요.<br/>
-        와루도 프로그램에는 다양한 기능이 있어 버츄얼로 더 많은 기능을 보여주고 싶다면 와루도,<br/>
-        단순 소통을 위한 상반신 위주 방송을 하고 싶다면 VSF를 추천드립니다.<br/>
-        컴퓨터 사양이 좋지 않다면 VSF를 선택해주세요. 나중에 와루도로 이사도 가능합니다.
-      </p>
-</details>
-<details>
-<summary>4. 손 트래킹까지 가능한가요?</summary>
+<summary>3. 손 트래킹까지 가능한가요?</summary>
 <p>네! 모든 프로그램 손 트래킹이 가능하도록 안내해드립니다.</p>
 </details>
 <details>
-<summary>5. 작업이 완료된 후에도 헤어와 의상을 계속 추가해도 되나요?</summary>
+<summary>4. 작업이 완료된 후에도 헤어와 의상을 계속 추가해도 되나요?</summary>
 <p>네! 물론 가능합니다. 추가 작업도 언제든 환영합니다.</p>
 </details>
 </section>
@@ -1864,8 +1881,9 @@ body.lightbox-lock{overflow:visible}
 <div class="notice-item">BOOTH 대부분의 파츠는 모두 <b>양측 구매 조건</b>이며, 아바타 포함 모든 파츠는 의뢰자님과 작업자 모두 구매되어야 작업이 진행됩니다.</div>
 <div class="notice-item">작가가 보유하고 있지 않은 파츠는 의뢰자분께서 구매해 주셔야 하며, 파츠 선물 후 환불은 어려우니 신중하게 확인 후 구매해주세요.</div>
 <div class="notice-item">BOOTH에서 상업적 이용 허가가 필요한 파츠는 의뢰자 <b>본인이 직접 허가를 받아야 하며</b>, 허가 없이 사용할 경우 발생하는 문제는 책임지지 않습니다.</div>
-<div class="notice-item">작업물은 해마다 1~2회 정리합니다. 정리 기간은 디스코드 내 공지로 먼저 안내드리며, 오랜 기간(최대 한 달) 동안 답변이 없을 시 작업물은 삭제됩니다.</div>
+<div class="notice-item">작업물은 해마다 1~2회 정리합니다. 정리 기간은 디스코드 내 공지와 함께 개별로도 먼저 안내드리며, 오랜 기간(최대 한 달) 동안 답변이 없을 시 작업물은 삭제됩니다.</div>
 <div class="notice-item">모든 작업물은 포트폴리오로 사용될 수 있으며, 원치 않으실 경우 포트폴리오 비공개 옵션을 구매해주세요.</div>
+<div class="notice-item">모든 작업은 <b>Face ID 기능이 있는 아이폰 또는 아이패드</b>를 사용한다는 전제하에 진행됩니다.</div>
 <div class="notice-item">유니티패키지와 VRM 파일 요청 시 BOOTH 구매내역을 확인합니다.</div>
 <div class="notice-item">작가의 실수로 인한 오류는 무제한 A/S 가능합니다.</div>
 <div class="notice-item">작업 완료 후 단순 변심으로 인한 수정은 추가금이 발생할 수 있습니다.</div>
@@ -2204,6 +2222,7 @@ function fallbackCopy(text, callback, savedScrollX = window.scrollX, savedScroll
     lightboxImg.classList.remove('image-changing');
     void lightboxImg.offsetWidth;
     lightboxImg.src = imageAddress(target);
+    window.__pvShow && window.__pvShow(lightbox, target, currentGroup, currentIndex);
     lightboxImg.alt = title;
     lightboxImg.classList.add('image-changing');
     caption.textContent = title;
@@ -2323,6 +2342,7 @@ function fallbackCopy(text, callback, savedScrollX = window.scrollX, savedScroll
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('lightbox-lock');
     lightboxImg.removeAttribute('src');
+    window.__pvHide && window.__pvHide(lightbox);
     lightbox.classList.remove('gif-mode', 'complete-mode', 'shape-mode');
     thumbs.innerHTML = '';
   }
@@ -2486,6 +2506,88 @@ function fallbackCopy(text, callback, savedScrollX = window.scrollX, savedScroll
       }
     }
   }, true);
+})();
+</script>
+<script>
+/* 확대 영상: 미리 받아둔 영상 요소를 바꿔 끼워서 멈칫거림을 없앱니다 */
+(() => {
+  const pool = new Map();
+  const get = (url, poster) => {
+    let v = pool.get(url);
+    if (!v) {
+      v = document.createElement('video');
+      v.className = 'lightbox-video';
+      v.muted = true; v.loop = true; v.playsInline = true;
+      v.setAttribute('playsinline', ''); v.setAttribute('muted', '');
+      v.preload = 'auto';
+      if (poster) v.poster = poster;
+      v.src = url;
+      v.load();
+      pool.set(url, v);
+    }
+    return v;
+  };
+  const posterOf = img => img.dataset.poster || img.getAttribute('src') || '';
+  const warm = img => { if (img && img.dataset.video) get(img.dataset.video, posterOf(img)); };
+
+  window.__pvShow = (lightbox, target, group, index) => {
+    const media = lightbox.querySelector('.lightbox-media');
+    const current = media.querySelector('video.lightbox-video');
+    if (!target.dataset.video) {
+      lightbox.classList.remove('video-mode');
+      if (current) { current.pause(); current.remove(); }
+      return;
+    }
+    lightbox.classList.add('video-mode');
+    lightbox.classList.remove('gif-mode');
+    const v = get(target.dataset.video, posterOf(target));
+    if (current !== v) {
+      if (current) { current.pause(); current.remove(); }
+      media.appendChild(v);
+    }
+    const card = target.closest('.work');
+    const fit = () => {
+      const mr = media.getBoundingClientRect();
+      const wide = v.videoWidth && v.videoHeight && (v.videoWidth / v.videoHeight) >= 1.3;
+      v.classList.toggle('fill', !!(card && card.dataset.category === 'complete' && wide && mr.height > 0));
+    };
+    if (v.readyState >= 1) fit(); else v.addEventListener('loadedmetadata', fit, { once: true });
+    try { v.currentTime = 0; } catch (e) {}
+    const p = v.play(); if (p) p.catch(() => {});
+    if (group && group.length) {
+      warm(group[(index + 1) % group.length]);
+      warm(group[(index - 1 + group.length) % group.length]);
+      warm(group[(index + 2) % group.length]);
+    }
+  };
+  window.__pvHide = lightbox => {
+    lightbox.classList.remove('video-mode');
+    const v = lightbox.querySelector('.lightbox-media video.lightbox-video');
+    if (v) { v.pause(); v.remove(); }
+  };
+
+  /* 마우스를 올리거나 손가락을 대면 그 영상을 미리 받아둡니다 */
+  document.querySelectorAll('img.zoomable-image[data-video]').forEach(img => {
+    const wrap = img.closest('.zoom-wrap') || img;
+    ['pointerenter', 'touchstart'].forEach(ev =>
+      wrap.addEventListener(ev, () => warm(img), { passive: true, once: true }));
+  });
+})();
+</script>
+<script>
+/* 화면에 보이는 영상 썸네일만 재생해서 버벅임을 줄입니다 */
+(() => {
+  const vids = [...document.querySelectorAll('video.thumb-video')];
+  const play = v => { v.muted = true; const p = v.play(); if (p) p.catch(() => {}); };
+  if (!('IntersectionObserver' in window)) { vids.forEach(play); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const v = e.target;
+      const card = v.closest('.work');
+      if (e.isIntersecting && !(card && card.hidden)) play(v); else v.pause();
+    });
+  }, { rootMargin: '200px 0px' });
+  vids.forEach(v => io.observe(v));
 })();
 </script>
 </body>
