@@ -1321,12 +1321,30 @@ body.lightbox-lock{overflow:visible}
 .bl-title{font-size:15px;font-weight:800;letter-spacing:-.3px;color:var(--ink);word-break:keep-all}
 .bl-text{margin:0;font-size:13px;line-height:1.6;color:#6f6f6f;word-break:keep-all}
 .bl-btn{margin:0!important;padding:7px 12px!important;font-size:12px!important;white-space:nowrap}
-/* 와루도 구매자 혜택 */
-.wd-tiers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.wd-tier{display:flex;flex-direction:column;gap:12px;min-width:0;padding:18px;border:1px solid var(--line);border-radius:17px;background:#fff}
-.wd-pro{border:1px solid #ead98f;background:#fffdf5}
-.wd-name{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:800;letter-spacing:-.3px;color:var(--ink)}
-.wd-name em{font-style:normal;font-size:10.5px;font-weight:800;letter-spacing:.06em;padding:3px 8px;border-radius:999px;background:var(--yellow);color:var(--ink)}
+/* 와루도 구매자 혜택: 일반/Pro 비교표 */
+.wd-table{border:1px solid var(--line);border-radius:17px;overflow:hidden}
+.wd-row{display:grid;grid-template-columns:minmax(0,1fr) 84px 84px;align-items:center;border-top:1px solid var(--line)}
+.wd-row:first-child{border-top:0}
+.wd-head{background:#fafafa;font-size:12.5px;font-weight:800;color:#666}
+.wd-head > span{padding:11px 18px}
+.wd-head > .wd-col{padding:11px 0;text-align:center}
+.wd-head .wd-col-pro{color:var(--ink)}
+.wd-item{display:flex;flex-direction:column;gap:2px;min-width:0;padding:13px 18px}
+.wd-item b{font-size:14.5px;font-weight:800;letter-spacing:-.3px;color:var(--ink);word-break:keep-all}
+.wd-item span{font-size:12.5px;line-height:1.55;color:#777;word-break:keep-all}
+.wd-col{display:grid;place-items:center;align-self:stretch}
+.wd-col-pro{background:#fffbea}
+.wd-head .wd-col-pro{background:var(--yellow)}
+.wd-yes .bx-check{display:block;width:22px;height:22px;margin:0;padding:4px;border-radius:50%;background:var(--yellow);color:var(--ink)}
+.wd-no{font-size:16px;font-weight:700;color:#c9c9c9}
+.wd-badge{display:inline-block;vertical-align:2px;margin-left:7px;padding:2px 7px;border-radius:999px;background:var(--yellow-soft);border:1px solid #ead98f;color:#8a6c08;font-style:normal;font-size:10.5px;font-weight:800;letter-spacing:.02em;white-space:nowrap}
+.wd-row-star .wd-badge{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+.wd-claim{display:block;font-weight:800;color:var(--ink);font-size:13.5px}
+.wd-badge-h{vertical-align:6px;margin-left:8px;font-size:11.5px;padding:3px 9px;background:var(--ink);border-color:var(--ink);color:#fff}
+.wd-row-star .wd-item b{font-size:15.5px}
+.wd-fps{font-style:normal;font-weight:800;white-space:nowrap}
+.wd-fps s{text-decoration:none;color:#d6454b}
+.wd-fps ins{text-decoration:none;color:#1f9d5a}
 .bx-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
 .bx-list li{display:flex;align-items:flex-start;gap:9px}
 .bx-list li div{display:flex;flex-direction:column;min-width:0}
@@ -1335,7 +1353,7 @@ body.lightbox-lock{overflow:visible}
 .bx-list .wd-inc b{color:#8a6c08}
 .bx-check{flex:0 0 18px;width:18px;height:18px;margin-top:2px;padding:3px;border-radius:50%;background:var(--yellow-soft);color:#8a6c08}
 .wd-pro .bx-check{background:var(--yellow);color:var(--ink)}
-.wd-link{margin-top:14px;border:0;background:none;padding:0;font:inherit;font-size:13px;font-weight:700;color:#8a6c08;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.wd-link{align-self:flex-start;margin-top:4px;border:0;background:none;padding:0;font:inherit;font-size:13px;font-weight:700;color:#8a6c08;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .wd-link:hover{color:var(--ink)}
 .wd-link:focus-visible,.bl-btn:focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
 @media(max-width:760px){
@@ -1344,9 +1362,12 @@ body.lightbox-lock{overflow:visible}
   .bl-title{font-size:14px;grid-column:2}
   .bl-text{grid-column:2 / -1;font-size:12px}
   .bl-btn{grid-column:3;grid-row:1;width:auto!important;min-height:0!important;padding:5px 9px!important}
-  .wd-tiers{grid-template-columns:1fr;gap:9px}
-  .wd-tier{padding:14px}
-  .wd-name{font-size:15px}
+  .wd-row{grid-template-columns:minmax(0,1fr) 50px 50px}
+  .wd-head > span{padding:10px 12px}
+  .wd-item{padding:11px 12px}
+  .wd-item b{font-size:13.5px}
+  .wd-item span{font-size:12px}
+  .wd-yes .bx-check{width:20px;height:20px}
 }
 </style>
 <style>
@@ -1509,27 +1530,17 @@ body.lightbox-lock{overflow:visible}
 <section class="card warudo-card">
 <div class="section-head">
 <div class="kicker">WARUDO</div>
-<h2>와루도 구매자 혜택</h2>
-<div class="desc">와루도 세트로 주문하시면 아래 혜택을 함께 드려요.</div>
+<h2>와루도 구매자 혜택 <em class="wd-badge wd-badge-h">모두 자체 제작</em></h2>
+<div class="desc">와루도 세트로 주문하시면 아래 혜택을 함께 드려요. 모든 툴과 플러그인은 노랭꼬가 직접 만들었어요.</div>
 </div>
-<div class="wd-tiers">
-<div class="wd-tier">
-<div class="wd-name">Warudo 일반</div>
-<ul class="bx-list">
-<li><svg class="bx-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4l2.9 2.8 6.1-6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>옷장 리모컨으로 모든 옷장 작업</b><span>버튼 하나로 의상을 바로 갈아입을 수 있어요.</span></div></li>
-<li><svg class="bx-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4l2.9 2.8 6.1-6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>자체 제작 툴로 최적화</b><span>파츠가 아무리 많아도 프레임이 끊기지 않아요.</span></div></li>
-</ul>
+<div class="wd-table" role="table" aria-label="와루도 일반과 Pro 혜택 비교">
+<div class="wd-row wd-head" role="row"><span role="columnheader">혜택</span><span role="columnheader" class="wd-col">일반</span><span role="columnheader" class="wd-col wd-col-pro">Pro</span></div>
+<div class="wd-row wd-row-star" role="row"><div class="wd-item" role="cell"><b>최적화<em class="wd-badge">업계 최고</em></b><span>헤어와 의상 파츠를 아무리 늘려도 프레임이 끊기지 않아요.</span><button class="wd-link" type="button" onclick="(function(){var b=document.querySelector('.tab-btn[data-filter=optimize]');if(!b)return;b.click();var s=document.getElementById('portfolioSlider');if(s)s.scrollIntoView({behavior:'smooth',block:'center'});})()">최적화 전·후 영상 보기 ›</button></div><div class="wd-col" role="cell"><span class="wd-yes" aria-label="포함"><svg class="bx-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4l2.9 2.8 6.1-6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="wd-col wd-col-pro" role="cell"><span class="wd-yes" aria-label="포함"><svg class="bx-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4l2.9 2.8 6.1-6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+<div class="wd-row " role="row"><div class="wd-item" role="cell"><b>옷장 리모컨으로 모든 옷장 작업</b><span>버튼 하나로 의상을 바로 갈아입을 수 있어요.</span></div><div class="wd-col" role="cell"><span class="wd-yes" aria-label="포함"><svg class="bx-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4l2.9 2.8 6.1-6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="wd-col wd-col-pro" role="cell"><span class="wd-yes" aria-label="포함"><svg class="bx-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4l2.9 2.8 6.1-6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+<div class="wd-row " role="row"><div class="wd-item" role="cell"><b>체형 조절 플러그인 증정</b><span>머리 크기, 상체·하체 크기를 직접 조정할 수 있어요.</span></div><div class="wd-col" role="cell"><span class="wd-yes" aria-label="포함"><svg class="bx-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4l2.9 2.8 6.1-6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="wd-col wd-col-pro" role="cell"><span class="wd-yes" aria-label="포함"><svg class="bx-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4l2.9 2.8 6.1-6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+<div class="wd-row " role="row"><div class="wd-item" role="cell"><b>닐로툰 볼륨 + 포프 프리셋 증정</b><span>직접 만든 닐로툰 프리셋을 함께 드려요.</span></div><div class="wd-col" role="cell"><span class="wd-no" aria-label="미포함">–</span></div><div class="wd-col wd-col-pro" role="cell"><span class="wd-yes" aria-label="포함"><svg class="bx-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4l2.9 2.8 6.1-6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
+<div class="wd-row " role="row"><div class="wd-item" role="cell"><b>포즈·캡처 플러그인 증정</b><span>포즈를 다양하게 수정하고, 고화질로 캡처할 수 있어요.</span></div><div class="wd-col" role="cell"><span class="wd-no" aria-label="미포함">–</span></div><div class="wd-col wd-col-pro" role="cell"><span class="wd-yes" aria-label="포함"><svg class="bx-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4l2.9 2.8 6.1-6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
 </div>
-<div class="wd-tier wd-pro">
-<div class="wd-name">Warudo Pro <em>PRO</em></div>
-<ul class="bx-list">
-<li class="wd-inc"><svg class="bx-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4l2.9 2.8 6.1-6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Warudo 일반 혜택 모두 포함</b></div></li>
-<li><svg class="bx-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4l2.9 2.8 6.1-6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>닐로툰 볼륨 + 포프 프리셋 증정</b><span>Pro에서 쓸 수 있는 닐로툰 프리셋을 함께 드려요.</span></div></li>
-<li><svg class="bx-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4l2.9 2.8 6.1-6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>자체 제작 플러그인 증정</b><span>포즈를 다양하게 수정하고, 고화질로 캡처할 수 있어요.</span></div></li>
-</ul>
-</div>
-</div>
-<button class="wd-link" type="button" onclick="(function(){var b=document.querySelector('.tab-btn[data-filter=optimize]');if(!b)return;b.click();var s=document.getElementById('portfolioSlider');if(s)s.scrollIntoView({behavior:'smooth',block:'center'});})()">최적화 전·후 영상 보기 ›</button>
 </section>
 <section class="card">
 <div class="section-head">
