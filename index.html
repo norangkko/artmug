@@ -1372,6 +1372,28 @@ body.lightbox-lock{overflow:visible}
 @media(min-width:761px){.personal-grid.personal-grid-4{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
 .personal-card .thumb.zoom-wrap{position:relative}
 .personal-card .thumb img{object-fit:cover!important;object-position:center top}
+
+/* ===== 보유 아바타 카드 (BOOTH 링크) ===== */
+.av-count{display:inline-block;vertical-align:middle;margin-left:6px;padding:3px 10px;border-radius:999px;background:var(--yellow-soft);border:1px solid #f3e2a6;color:#8a6c08;font-size:13px;font-weight:800;letter-spacing:0;position:relative;top:-2px}
+.av-group{display:flex;align-items:center;gap:7px;margin:4px 0 11px;font-size:14px;font-weight:800;color:var(--ink)}
+.av-group::before{content:'';width:4px;height:15px;border-radius:2px;background:var(--yellow)}
+.av-group em{font-style:normal;font-size:12px;font-weight:800;color:#a77d00}
+.av-grid + .av-group{margin-top:26px}
+.av-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px}
+.av-card{position:relative;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;color:var(--ink);transition:border-color .18s ease,box-shadow .18s ease}
+.av-card:hover{border-color:#f3dc8c;box-shadow:0 8px 18px rgba(243,198,63,.18)}
+.av-thumb{display:block;aspect-ratio:1/1;background:#f5f5f5;overflow:hidden}
+.av-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.av-name{display:block;padding:8px 6px 6px;font-size:13px;font-weight:800;letter-spacing:-.4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.av-go{display:block;margin:0 8px 9px;padding:4px 0;border-radius:999px;background:var(--yellow-soft);border:1px solid #f3e2a6;font-size:10.5px;font-weight:800;color:#8a6c08;text-align:center;text-decoration:none;white-space:nowrap;transition:background .18s,color .18s,border-color .18s}
+.av-go:hover,.av-go:focus-visible{background:var(--yellow);border-color:var(--yellow);color:#181818;outline:none}
+@media(max-width:720px){
+  .av-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+  .av-card{border-radius:12px}
+  .av-name{font-size:12px;padding:6px 4px 5px}
+  .av-go{font-size:9.5px;margin:0 5px 7px;padding:3px 0}
+  .av-count{font-size:11px;padding:2px 8px}
+}
 </style>
 <style>
 /* FAQ는 한 번에 하나만 펼쳐지도록 사용하며, 긴 답변도 폭을 넘지 않게 정리 */
@@ -1545,38 +1567,38 @@ body.lightbox-lock{overflow:visible}
 <div class="wd-row " role="row"><div class="wd-item" role="cell"><b>포즈·캡처 플러그인 증정</b><span>포즈를 다양하게 수정하고, 고화질로 캡처할 수 있어요.</span></div><div class="wd-col" role="cell"><span class="wd-no" aria-label="미포함">–</span></div><div class="wd-col wd-col-pro" role="cell"><span class="wd-yes" aria-label="포함"><svg class="bx-check" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4l2.9 2.8 6.1-6.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div>
 </div>
 </section>
-<section class="card">
-<div class="section-head">
-<div class="kicker">OWNED AVATARS</div>
-<h2>보유 아바타</h2>
-<div class="desc">현재 작업 가능한 보유 아바타 목록입니다.</div>
-</div>
-<div class="owned-avatar-wrap">
+<section class="card" id="owned-avatars">
+<div class="section-head av-head">
 <div>
-<div class="owned-avatar-list">
-<span class="owned-avatar-chip">마누카</span>
-<span class="owned-avatar-chip">마야</span>
-<span class="owned-avatar-chip">모에</span>
-<span class="owned-avatar-chip">밀티나</span>
-<span class="owned-avatar-chip">시나노</span>
-<span class="owned-avatar-chip">밀피</span>
-<span class="owned-avatar-chip">시오</span>
-<span class="owned-avatar-chip">아이리</span>
-<span class="owned-avatar-chip">루루네</span>
-<span class="owned-avatar-chip">루미나</span>
-<span class="owned-avatar-chip">마후유</span>
-<span class="owned-avatar-chip">마오</span>
-<span class="owned-avatar-chip">리나시타</span>
-<span class="owned-avatar-chip">라슈샤</span>
-<span class="owned-avatar-chip">카구야</span>
-<span class="owned-avatar-chip">카나타</span>
-<span class="owned-avatar-chip">코마노</span>
+<div class="kicker">OWNED AVATARS</div>
+<h2>보유 아바타 <span class="av-count">19종</span></h2>
+<div class="desc">현재 작업 가능한 보유 아바타 목록입니다. 목록에 없는 아바타는 선물로 보내주셔야 작업이 가능합니다.</div>
 </div>
-<div class="owned-avatar-note">목록에 없는 아바타는 기프트(선물)로 보내주셔야 작업이 가능합니다.</div>
 </div>
-<div aria-label="보유 아바타 이미지 목록, 좌우로 밀어서 확인" class="owned-avatar-image-scroll">
-<img alt="보유 아바타 안내 이미지" class="owned-avatar-image" decoding="async" loading="lazy" src="https://norangkko.github.io/artmug/assets/images/image-02-a777c6ae04c2.png"/>
+<div class="av-group"><span>여성 아바타</span><em>16</em></div>
+<div class="av-grid">
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/ed52788c-0b3b-4e38-9ded-1e5797daf0ef/i/6106863/07bd77df-a8ee-4244-8c4e-16cf7cb584bb_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/ed52788c-0b3b-4e38-9ded-1e5797daf0ef/i/6106863/07bd77df-a8ee-4244-8c4e-16cf7cb584bb_base_resized.jpg" alt="시나노" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">시나노</span><a class="av-go" href="https://booth.pm/ko/items/6106863" target="_blank" rel="noopener" title="시나노 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/8a7426aa-ba62-4ef0-9e7d-2c8ea96e7c9b/i/5058077/a18424fe-a56e-411a-9c47-27c56909593c_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/8a7426aa-ba62-4ef0-9e7d-2c8ea96e7c9b/i/5058077/a18424fe-a56e-411a-9c47-27c56909593c_base_resized.jpg" alt="마누카" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">마누카</span><a class="av-go" href="https://booth.pm/ko/items/5058077" target="_blank" rel="noopener" title="마누카 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/01965a9e-bce5-4027-bc0e-0b8e7df43c6e/i/6538026/182b133f-1c86-4ae8-8536-5e00f63b86cf_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/01965a9e-bce5-4027-bc0e-0b8e7df43c6e/i/6538026/182b133f-1c86-4ae8-8536-5e00f63b86cf_base_resized.jpg" alt="밀티나" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">밀티나</span><a class="av-go" href="https://booth.pm/ko/items/6538026" target="_blank" rel="noopener" title="밀티나 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/96d1d589-6879-4d30-8891-a2c6b8d64186/i/5957830/a4e0ae5b-7797-448b-80b1-e852c861e080_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/96d1d589-6879-4d30-8891-a2c6b8d64186/i/5957830/a4e0ae5b-7797-448b-80b1-e852c861e080_base_resized.jpg" alt="루루네" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">루루네</span><a class="av-go" href="https://booth.pm/ko/items/5957830" target="_blank" rel="noopener" title="루루네 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/817e9a9a-020c-4fac-8b21-96f80d6e25cb/i/5650156/b620a7e2-feae-4c1c-a9da-0364bec82400_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/817e9a9a-020c-4fac-8b21-96f80d6e25cb/i/5650156/b620a7e2-feae-4c1c-a9da-0364bec82400_base_resized.jpg" alt="시오" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">시오</span><a class="av-go" href="https://booth.pm/ko/items/5650156" target="_blank" rel="noopener" title="시오 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/ed52788c-0b3b-4e38-9ded-1e5797daf0ef/i/3681787/2409bb9f-24f3-42dd-8ad6-89a0656f2166_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/ed52788c-0b3b-4e38-9ded-1e5797daf0ef/i/3681787/2409bb9f-24f3-42dd-8ad6-89a0656f2166_base_resized.jpg" alt="키쿄" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">키쿄</span><a class="av-go" href="https://booth.pm/ko/items/3681787" target="_blank" rel="noopener" title="키쿄 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/1ae5d9f5-29a4-4574-ab86-a316c22db92a/i/6571299/7bda05bb-f9d5-45a8-811a-b95ac555beb8_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/1ae5d9f5-29a4-4574-ab86-a316c22db92a/i/6571299/7bda05bb-f9d5-45a8-811a-b95ac555beb8_base_resized.jpg" alt="밀피" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">밀피</span><a class="av-go" href="https://booth.pm/ko/items/6571299" target="_blank" rel="noopener" title="밀피 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/1ae5d9f5-29a4-4574-ab86-a316c22db92a/i/5007531/dfdc2835-e4db-44f8-85ed-20bf607ad64e_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/1ae5d9f5-29a4-4574-ab86-a316c22db92a/i/5007531/dfdc2835-e4db-44f8-85ed-20bf607ad64e_base_resized.jpg" alt="마후유" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">마후유</span><a class="av-go" href="https://booth.pm/ko/items/5007531" target="_blank" rel="noopener" title="마후유 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/96d1d589-6879-4d30-8891-a2c6b8d64186/i/6846646/2db1d21a-3bca-42c5-9bbc-2313a6b919fc_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/96d1d589-6879-4d30-8891-a2c6b8d64186/i/6846646/2db1d21a-3bca-42c5-9bbc-2313a6b919fc_base_resized.jpg" alt="마오" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">마오</span><a class="av-go" href="https://booth.pm/ko/items/6846646" target="_blank" rel="noopener" title="마오 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/87b70515-e32e-4a2e-bf41-317cf2c2177c/i/7502898/a2c93b99-de64-49f4-a76b-30ff769a5021_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/87b70515-e32e-4a2e-bf41-317cf2c2177c/i/7502898/a2c93b99-de64-49f4-a76b-30ff769a5021_base_resized.jpg" alt="루미나" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">루미나</span><a class="av-go" href="https://booth.pm/ko/items/7502898" target="_blank" rel="noopener" title="루미나 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/de9ac79a-d2ba-4cc5-a4c4-002da7a40795/i/4825073/46d77d10-f243-47a9-9784-65266da975a9_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/de9ac79a-d2ba-4cc5-a4c4-002da7a40795/i/4825073/46d77d10-f243-47a9-9784-65266da975a9_base_resized.jpg" alt="라슈샤" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">라슈샤</span><a class="av-go" href="https://booth.pm/ko/items/4825073" target="_blank" rel="noopener" title="라슈샤 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/f420c992-4225-4ce0-b751-3a4acdceaab6/i/3390957/452e082f-67e8-480d-b697-9378977f41b0_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/f420c992-4225-4ce0-b751-3a4acdceaab6/i/3390957/452e082f-67e8-480d-b697-9378977f41b0_base_resized.jpg" alt="마야" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">마야</span><a class="av-go" href="https://booth.pm/ko/items/3390957" target="_blank" rel="noopener" title="마야 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/96d1d589-6879-4d30-8891-a2c6b8d64186/i/8562330/4b163f36-c55d-4468-8c60-476c86d0f26b_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/96d1d589-6879-4d30-8891-a2c6b8d64186/i/8562330/4b163f36-c55d-4468-8c60-476c86d0f26b_base_resized.jpg" alt="카구야" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">카구야</span><a class="av-go" href="https://booth.pm/ko/items/8562330" target="_blank" rel="noopener" title="카구야 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/f420c992-4225-4ce0-b751-3a4acdceaab6/i/4667400/1641b18e-eb97-4cbe-85fd-0f04cd53b46a_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/f420c992-4225-4ce0-b751-3a4acdceaab6/i/4667400/1641b18e-eb97-4cbe-85fd-0f04cd53b46a_base_resized.jpg" alt="모에" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">모에</span><a class="av-go" href="https://booth.pm/ko/items/4667400" target="_blank" rel="noopener" title="모에 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/f420c992-4225-4ce0-b751-3a4acdceaab6/i/6082686/81021dbd-ca83-4c3b-8868-230e780b63a3_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/f420c992-4225-4ce0-b751-3a4acdceaab6/i/6082686/81021dbd-ca83-4c3b-8868-230e780b63a3_base_resized.jpg" alt="아이리" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">아이리</span><a class="av-go" href="https://booth.pm/ko/items/6082686" target="_blank" rel="noopener" title="아이리 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/9a2758a1-58f4-48a0-9788-9eedc962eaea/i/7475899/9c07f5f9-e550-47a5-bb36-8fd038e5416a_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/9a2758a1-58f4-48a0-9788-9eedc962eaea/i/7475899/9c07f5f9-e550-47a5-bb36-8fd038e5416a_base_resized.jpg" alt="리나시타" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">리나시타</span><a class="av-go" href="https://booth.pm/ko/items/7475899" target="_blank" rel="noopener" title="리나시타 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
 </div>
+<div class="av-group"><span>남성 아바타</span><em>3</em></div>
+<div class="av-grid">
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/a724e93d-5634-41cf-ac1f-8f8985536a5a/i/5260363/051a65d4-583a-439b-add8-5170e4fcd25f_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/a724e93d-5634-41cf-ac1f-8f8985536a5a/i/5260363/051a65d4-583a-439b-add8-5170e4fcd25f_base_resized.jpg" alt="코마노" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">코마노</span><a class="av-go" href="https://booth.pm/ko/items/5260363" target="_blank" rel="noopener" title="코마노 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/c5f07bf0-8b84-476c-8482-585249aba6c1/i/6813995/19d70a5c-734b-437b-b415-89f181cdb374_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/c5f07bf0-8b84-476c-8482-585249aba6c1/i/6813995/19d70a5c-734b-437b-b415-89f181cdb374_base_resized.jpg" alt="카나타" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">카나타</span><a class="av-go" href="https://booth.pm/ko/items/6813995" target="_blank" rel="noopener" title="카나타 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
+<div class="av-card"><span class="av-thumb"><img class="zoomable-image" data-lightbox-group="avatars" data-full="https://booth.pximg.net/c5f07bf0-8b84-476c-8482-585249aba6c1/i/8591283/0c7101c3-21fc-4650-9a52-02dcdac3f510_base_resized.jpg" src="https://booth.pximg.net/c/300x300_a2_g5/c5f07bf0-8b84-476c-8482-585249aba6c1/i/8591283/0c7101c3-21fc-4650-9a52-02dcdac3f510_base_resized.jpg" alt="하루카" loading="lazy" decoding="async" referrerpolicy="no-referrer"/></span><span class="av-name">하루카</span><a class="av-go" href="https://booth.pm/ko/items/8591283" target="_blank" rel="noopener" title="하루카 BOOTH 판매 페이지">BOOTH 보기 ↗</a></div>
 </div>
 </section>
 <section class="card">
